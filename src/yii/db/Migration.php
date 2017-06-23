@@ -1,6 +1,6 @@
 <?php
 
-namespace woop\extension\migration\yii\db;
+namespace yii2lab\migration\yii\db;
 
 use yii\db\Migration as YiiMigration;
 

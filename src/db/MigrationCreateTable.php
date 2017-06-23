@@ -1,8 +1,8 @@
 <?php
-namespace woop\extension\migration\db;
+namespace yii2lab\migration\db;
 
 use Yii;
-use woop\extension\migration\yii\db\Migration;
+use yii2lab\migration\yii\db\Migration;
 
 /**
  * Migration
