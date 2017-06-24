@@ -2,7 +2,7 @@
 
 namespace yii2lab\migration\helpers;
 
-use woop\foundation\helpers\Helper;
+use yii2lab\helpers\Helper;
 use yii\helpers\ArrayHelper;
 
 class MigrationHelper {
