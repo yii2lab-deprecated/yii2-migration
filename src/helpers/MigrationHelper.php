@@ -1,6 +1,6 @@
 <?php
 
-namespace woop\extension\migration\helpers;
+namespace yii2lab\migration\helpers;
 
 use woop\foundation\helpers\Helper;
 use yii\helpers\ArrayHelper;
