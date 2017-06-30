@@ -9,7 +9,18 @@ class MigrationHelper {
 	
 	private static $aliases;
 	
-	function getAliases() {
+	public static function setPath($config) {
+		if(APP != CONSOLE) {
+			return $config;
+		}
+		$config['params']['dee.migration.path'] = ArrayHelper::merge(
+			$config['params']['dee.migration.path'], 
+			self::getAliases()
+		);
+		return $config;
+	}
+	
+	private function getAliases() {
 		self::$aliases = [];
 		$apps = Helper::getApps();
 		$apps = ArrayHelper::merge($apps, Helper::getApiSubApps());
