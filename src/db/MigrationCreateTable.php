@@ -2,7 +2,7 @@
 namespace yii2lab\migration\db;
 
 use Yii;
-use yii2lab\migration\yii\db\Migration;
+use yii\db\Migration;
 
 /**
  * Migration
@@ -67,7 +67,6 @@ class MigrationCreateTable extends Migration
 		if(method_exists($this, 'afterCreate')) {
 			$this->afterCreate();
 		}
-		$this->loadDump();
 		return true;
 	}
 	
