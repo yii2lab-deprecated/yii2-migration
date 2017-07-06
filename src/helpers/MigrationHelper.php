@@ -20,7 +20,7 @@ class MigrationHelper {
 		return $config;
 	}
 	
-	private function getAliases() {
+	private static function getAliases() {
 		self::$aliases = [];
 		$apps = Helper::getApps();
 		$apps = ArrayHelper::merge($apps, Helper::getApiSubApps());
@@ -30,13 +30,13 @@ class MigrationHelper {
 		return self::$aliases;
 	}
 
-	private function addMigrationsDir($dir) {
+	private static function addMigrationsDir($dir) {
 		if(is_dir($dir)) {
 			self::$aliases[] = '@' . $dir;
 		}
 	}
 	
-	private function getAppMigrations($app) {
+	private static function getAppMigrations($app) {
 		self::addMigrationsDir($app . '/migrations');
 		$modules = Helper::getModules($app);
 		foreach($modules as $module) {
