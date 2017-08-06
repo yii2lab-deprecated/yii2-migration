@@ -28,6 +28,10 @@ class MigrationCreateTable extends Migration
 		return 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=' . $engine;
 	}
 	
+	public function comment($text) {
+		$this->addCommentOnTable($this->table, $text);
+	}
+	
 	private function initBugFix() {
 		switch (Yii::$app->db->driverName) {
 			case 'mysql':
@@ -65,6 +69,9 @@ class MigrationCreateTable extends Migration
 		}
 		
 		if(method_exists($this, 'afterCreate')) {
+			if(!empty($this->comment)) {
+				$this->comment($this->comment);
+			}
 			$this->afterCreate();
 		}
 		return true;
