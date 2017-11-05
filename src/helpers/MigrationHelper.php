@@ -35,7 +35,6 @@ class MigrationHelper {
 			self::scanMigrations($target);
 		}
 		$aliases = array_unique(self::$aliases);
-		//prr($aliases,1,1);
 		return $aliases;
 	}
 
