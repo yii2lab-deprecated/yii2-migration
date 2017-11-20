@@ -102,7 +102,7 @@ class MigrationCreateTable extends Migration
 		return $type . '-' . $name . '-' . hash('crc32b', serialize($data));
 	}
 	
-	public function myAddForeignKey($columns, $refTable, $refColumns, $delete = null, $update = null)
+	public function myAddForeignKey($columns, $refTable, $refColumns, $delete = 'CASCADE', $update = 'CASCADE')
 	{
 		$name = $this->generateNameForKey('fk', $this->pureTableName(), [$columns, $refTable, $refColumns]);
 		return $this->addForeignKey($name, $this->table, $columns, $refTable, $refColumns, $delete, $update);
