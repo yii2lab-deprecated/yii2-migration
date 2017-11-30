@@ -18,7 +18,7 @@ class MigrationHelper {
 			return $config;
 		}
 		$config['params']['dee.migration.path'] = ArrayHelper::merge(
-			param('dee.migration.path', []),
+			ArrayHelper::getValue($config['params'], 'dee.migration.path', []),
 			self::getAliases()
 		);
 		return $config;
@@ -31,9 +31,13 @@ class MigrationHelper {
 		foreach($apps as $app) {
 			self::getAppMigrations($app);
 		}
-		$scanList = param('dee.migration.scan', []);
-		foreach($scanList as $target) {
-			self::scanMigrations($target);
+		if(!empty(self::$config['params']['dee.migration.scan'])) {
+			$scanAliases = self::$config['params']['dee.migration.scan'];
+			if(!empty($scanAliases)) {
+				foreach($scanAliases as $target) {
+					self::scanMigrations($target);
+				}
+			}
 		}
 		$aliases = array_unique(self::$aliases);
 		return $aliases;
