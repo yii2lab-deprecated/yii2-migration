@@ -5,6 +5,7 @@ namespace yii2lab\migration\helpers;
 use Yii;
 use yii2lab\helpers\Helper;
 use yii\helpers\ArrayHelper;
+use yii2lab\helpers\ModuleHelper;
 use yii2lab\helpers\yii\FileHelper;
 
 class MigrationHelper {
@@ -69,7 +70,7 @@ class MigrationHelper {
 	
 	private static function getAppMigrations($app) {
 		self::addMigrationsDir($app . '/migrations');
-		$modules = Helper::getModules($app);
+		$modules = ModuleHelper::allNamesByApp($app);
 		foreach($modules as $module) {
 			$dir = $app . '/modules/' . $module . '/migrations';
 			self::addMigrationsDir($dir);
