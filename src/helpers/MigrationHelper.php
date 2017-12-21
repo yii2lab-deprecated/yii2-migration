@@ -2,6 +2,7 @@
 
 namespace yii2lab\migration\helpers;
 
+use common\enums\app\AppEnum;
 use Yii;
 use yii2lab\helpers\Helper;
 use yii\helpers\ArrayHelper;
@@ -27,7 +28,7 @@ class MigrationHelper {
 	
 	private static function getAliases() {
 		self::$aliases = [];
-		$apps = Helper::getApps();
+		$apps = AppEnum::values();
 		$apps = ArrayHelper::merge($apps, Helper::getApiSubApps());
 		foreach($apps as $app) {
 			self::getAppMigrations($app);
