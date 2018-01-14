@@ -18,6 +18,10 @@ class SetPath extends BaseObject implements FilterInterface {
 	
 	private $aliases;
 	
+	public function isEnabled() {
+		return APP == CONSOLE;
+	}
+	
 	public function run($config) {
 		$config['params']['dee.migration.scan'] = ArrayHelper::merge(
 			ArrayHelper::getValue($config, 'params.dee.migration.scan', []),
