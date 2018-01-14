@@ -13,15 +13,20 @@ use yii2mod\helpers\ArrayHelper;
 
 class SetPath extends BaseObject implements FilterInterface {
 
+	public $path = [];
+	public $scan = [];
+	
 	private $aliases;
 	
 	public function run($config) {
-		if(APP != CONSOLE) {
-			return $config;
-		}
+		$config['params']['dee.migration.scan'] = ArrayHelper::merge(
+			ArrayHelper::getValue($config, 'params.dee.migration.scan', []),
+			$this->scan
+		);
 		$config['params']['dee.migration.path'] = ArrayHelper::merge(
-			ArrayHelper::getValue($config['params'], 'dee.migration.path', []),
-			$this->getAliases($config)
+			ArrayHelper::getValue($config, 'params.dee.migration.path', []),
+			$this->getAliases($config),
+			$this->path
 		);
 		return $config;
 	}
