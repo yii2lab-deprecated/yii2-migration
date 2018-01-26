@@ -28,6 +28,13 @@ class MigrationCreateTable extends Migration
 		return 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=' . $engine;
 	}
 	
+	public function enum($items) {
+		if(is_array($items)) {
+			$items = "'" . implode("', '" , $items). "'";
+		}
+		return "ENUM({$items})";
+	}
+	
 	public function comment($text) {
 		$this->addCommentOnTable($this->table, $text);
 	}
